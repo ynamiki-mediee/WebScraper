@@ -1,0 +1,22 @@
+# .devcontainer/compose.yaml
+services:
+  selenium:
+    # chromium for arm64
+    # You can change the image if needed
+    image: seleniarm/standalone-chromium:latest
+    ports:
+      - 4444:4444
+      - 7900:7900
+
+  webscript:
+    container_name: webscript
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    volumes:
+      - ..:/workspace:cached
+    environment:
+      SELENIUM_URL: http://selenium:4444/wd/hub
+    tty: true
