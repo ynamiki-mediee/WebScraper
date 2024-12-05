@@ -1,5 +1,5 @@
-# WebScript
-Python WebScript Project with poetry devcontainer
+# WebScraper
+Python WebScraper Project with poetry devcontainer
 
 ## Default Libraris
 - python = "^3.11"
