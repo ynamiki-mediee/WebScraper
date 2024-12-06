@@ -1,36 +1,50 @@
 // .devcontainer/devcontainer.json
 {
-  "name": "WebScriptDevContainer",
+  "name": "WebScraperDevContainer",
   "dockerComposeFile": "compose.yaml",
-  "service": "webscript",
+  "service": "app",
   "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils": {}
+  },
   "customizations": {
     "vscode": {
-      "settings": {
-        //isort
-        "editor.codeActionsOnSave": {
-          "source.organizeImports": true
-        },
-        //black
-        "editor.formatOnSave": true,
-        "python.formatting.provider": "black",
-        //flake8
-        "python.linting.lintOnSave": true,
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": false,
-        "python.linting.flake8Enabled": true,
-        //autoDocstring
-        "autoDocstring.docstringFormat": "google"
-      },
       "extensions": [
-        "bungcip.better-toml",
         "esbenp.prettier-vscode",
         "njpwerner.autodocstring",
         "mosapride.zenkaku",
         "streetsidesoftware.code-spell-checker",
-        "Shinotatwu-DS.file-tree-generator",
         "GrapeCity.gc-excelviewer",
-      ]
+        "tamasfe.even-better-toml"
+      ],
+
+      "settings": {
+        // isort
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+        },
+        // black
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true,
+        // flake8
+        "python.linting.lintOnSave": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        // autoDocstring
+        "autoDocstring.docstringFormat": "google",
+        // Python testing
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.nosetestsEnabled": false,
+        // Editor settings
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        // Git settings
+        "git.autofetch": true
+      }
     }
   },
   "postCreateCommand": "poetry install"

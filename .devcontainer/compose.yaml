@@ -8,8 +8,8 @@ services:
       - 4444:4444
       - 7900:7900
 
-  webscript:
-    container_name: webscript
+  app:
+    container_name: webscraper
     build:
       context: .
       dockerfile: Dockerfile
