@@ -1,15 +1,6 @@
-# .devcontainer/compose.yaml
 services:
-  selenium:
-    # chromium for arm64
-    # You can change the image if needed
-    image: seleniarm/standalone-chromium:latest
-    ports:
-      - 4444:4444
-      - 7900:7900
-
   app:
-    container_name: webscraper
+    container_name: poetry-playwright
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,6 +8,16 @@ services:
       - 8888:8888
     volumes:
       - ..:/workspace:cached
-    environment:
-      SELENIUM_URL: http://selenium:4444/wd/hub
     tty: true
+
+  # db:
+  #   image: postgres:latest
+  #   container_name: poetry-playwright-db
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: postgres
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
